@@ -553,7 +553,7 @@ func billingReportByCompetition(ctx context.Context, tenantDB dbOrTx, tenantID i
 		tenantID,
 		comp.ID,
 	); err != nil && err != sql.ErrNoRows {
-		return nil, fmt.Errorf("error Select visit_history: tenantID=%d, competitionID=%s, %w", tenantID, comp.ID, err)
+		return nil, fmt.Errorf("error Insert visit_history")
 	}
 	billingMap := map[string]string{}
 	for _, vh := range vhs {
@@ -1346,8 +1346,7 @@ func competitionRankingHandler(c echo.Context) error {
 		v.playerID, tenant.ID, competitionID, now,
 	); err != nil {
 		return fmt.Errorf(
-			"error Insert visit_history: playerID=%s, tenantID=%d, competitionID=%s, createdAt=%d, updatedAt=%d, %w",
-			v.playerID, tenant.ID, competitionID, now, now, err,
+			"error Insert visit_history"
 		)
 	}
 
