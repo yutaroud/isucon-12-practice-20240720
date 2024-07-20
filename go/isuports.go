@@ -1345,7 +1345,6 @@ func competitionRankingHandler(c echo.Context) error {
 		"INSERT INTO visit_history_alternative (player_id, tenant_id, competition_id, created_at) VALUES (?, ?, ?, ?)",
 		v.playerID, tenant.ID, competitionID, now,
 	); err != nil {
-		aaa
 		return fmt.Errorf("error Insert visit_history", err)
 	}
 
