@@ -1177,8 +1177,8 @@ func billingHandler(c echo.Context) error {
 }
 
 type PlayerScoreDetail struct {
-	CompetitionTitle string `json:"competition_title"`
-	Score            int64  `json:"score"`
+	CompetitionTitle string `db:"competition_title" json:"competition_title"`
+	Score            int64  `db:"score" json:"score"`
 }
 
 type PlayerHandlerResult struct {
