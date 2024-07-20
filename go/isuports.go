@@ -1528,6 +1528,7 @@ type MeHandlerResult struct {
 // GET /api/me
 // JWTで認証した結果、テナントやユーザ情報を返す
 func meHandler(c echo.Context) error {
+	return fmt.Errorf("error retrieveTenantRowFromHeader: %w", err)
 	tenant, err := retrieveTenantRowFromHeader(c)
 	if err != nil {
 		return fmt.Errorf("error retrieveTenantRowFromHeader: %w", err)
