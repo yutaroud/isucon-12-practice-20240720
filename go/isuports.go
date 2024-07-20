@@ -1225,7 +1225,7 @@ func playerHandler(c echo.Context) error {
 	if err := tenantDB.SelectContext(
 		ctx,
 		&psds,
-		"SELECT C.title AS competition_title, S.score AS score FROM competition C JOIN last_player_score S ON C.id = S.competition_id AND C.tenant_id = S.tenant_id WHERE S.player_id = ? AND C.tenant_id = ? ORDER BY C.created_at ASC",
+		"SELECT C.title AS competition_title, S.score AS score FROM competition C JOIN player_score S ON C.id = S.competition_id AND C.tenant_id = S.tenant_id WHERE S.player_id = ? AND C.tenant_id = ? ORDER BY C.created_at ASC",
 		p.ID, v.tenantID,
 	); err != nil && !errors.Is(err, sql.ErrNoRows) {
 		return fmt.Errorf("error Select competition: %w", err)
